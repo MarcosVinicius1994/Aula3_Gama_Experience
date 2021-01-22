@@ -25,15 +25,19 @@
     const app = document.querySelector('#app');  
     // function ClickMe (){
         app.innerHTML =`<div class ="container">
-                            <div class="card">
+                            <div class="card mt-5">
                                  <div class="card-body">
                                     <div class="mb-3"> 
-                                        <label for ="exampleFor"class="form-label">Email </label>
+                                        <label for ="exampleFor"class="form-label">Name: </label>
                                         <input type="name" class="form-control" id="name" placeholder="seu nome">
                                     </div> 
                                     <div class="mb-3"> 
-                                        <label for ="exampleForTextArea"class="form-label">Email </label>
+                                        <label for ="exampleForTextArea"class="form-label">Idade: </label>
                                         <textarea  name ="text" class="form-control" id="age" rows="3" placeholder="sua idade"></textarea>
+                                    </div> 
+                                    <div class="mb-3"> 
+                                        <label for ="exampleemail"class="form-control">Email: </label>
+                                        <input type="email" class="form-control" id="email" placeholder="seuemail@gmail.com">
                                     </div> 
                                      <button type="submit" onClick=SecondScream() class="btn btn-primary"> Primary </button>
                                 </div>
@@ -45,14 +49,36 @@
         function SecondScream(){
             let userName = this.document.getElementById('name').value;
             let ageUser =  this.document.getElementById('age').value;
-            app.innerHTML = `<div class="container"> 
-                        <div class="card"> 
-                            <div class="card-body">
-                                <h1>Meu nome é ${userName} e tenho ${ageUser}</h1>
-                                <h2>Obrigado!</h2>
+            let emailUser =  this.document.getElementById('email').value;
+
+
+            let LoadContent =  `<div class="d-flex justify-content-center mx-auto">
+                                <div class="spinner-grow d-flex justify-content-center">
+                                <span class="visually-hidden">Loading ...</span>
+                                </div>
+                                </div>`;
+            let content = `<div class="container"> 
+                        <div class="card mt-5"> 
+                            <div class="card-body" style="boder-style: groove;">
+                                <ul style="list-style-type: none;">
+                                    <li><strong> NOME:&nbsp;&nbsp;&nbsp;</strong>${userName} 
+                                    </li>
+                                    <hr>
+                                    <li><strong> EMAIL:&nbsp;&nbsp;&nbsp;</strong>${emailUser} 
+                                    </li>
+                                    <hr>
+                                    <li><strong> IDADE:&nbsp;&nbsp;&nbsp;</strong>${ageUser}
+                                    </li>
+                                    <hr>
+                                </ul>
                             </div>
                         </div>
                     </div>`;
+            app.innerHTML =LoadContent;
+
+            setTimeout(()=>{
+            app.innerHTML =content;
+            },1000);
         }
 </script> 
 </body>
